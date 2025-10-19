@@ -16,9 +16,9 @@
 // nice_view_spi: &spi0 { cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>; };
 
 // Uncomment this block if using RGB
-// &led_strip {
-//   chain-length = <28>;
-// };
+&led_strip {
+    chain-length = <28>;
+};
 
 / {
     keymap {
