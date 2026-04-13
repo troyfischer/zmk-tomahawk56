@@ -1,0 +1,23 @@
+Important shortcuts:
+Lower layer: PgDn + any key
+Upper layer: PgUp + any key
+
+Changing Bluetooth profile/switching between devices: PgDn + 1/2/3/4/5
+Eraising Bluetooth profile: PgDn + ESC
+
+Toggle RGB On/Off: PgDn + 6
+Hue Up: PgDn + 7
+Hue Down: PgDn + U
+Saturation Up: PgDn + 8
+Saturation Down: PgDn + I
+Brightness Up: PgDn + 9
+Brightness Down: PgDn + O (letter)
+Speed Up: PgDn + 0
+Speed Down: PgDn + P
+Next Effect: PgDn + DEL
+Previous Effect: PgDn + - 
+
+Official ZMK Studio App URL: https://zmk.studio/download
+Firmware: https://github.com/Tomahawk-Keyboards/tomahawk56-wireless-view-zmk-config/releases/download/v1.0/firmware.zip
+
+<img width="1020" height="750" alt="zmk" src="https://github.com/user-attachments/assets/1e681849-774a-49cf-ab46-c0e2c19e2068" />
