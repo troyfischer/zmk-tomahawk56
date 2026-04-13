@@ -3,7 +3,7 @@ Lower layer: PgDn + any key \
 Upper layer: PgUp + any key
 
 Changing Bluetooth profile/switching between devices: PgDn + 1/2/3/4/5 \
-Eraising Bluetooth profile: PgDn + ESC
+Erasing Bluetooth profile: PgDn + ESC
 
 Toggle RGB On/Off: PgDn + 6 \
 Hue Up: PgDn + 7 \
