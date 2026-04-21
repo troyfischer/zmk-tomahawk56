@@ -108,7 +108,7 @@
 // |       |      |      |      |      |      |            |      |        |        |       |      |       |
 // |       |  [   |  (   |  )   |  ]   |  ?   |            |      | VOL-   | VOL+   | MUTE  |      |       |
 // |       |  ^   |  =   |  _   |  $   |  *   |            |  <-  | DOWN   | UP     |  ->   |      |       |
-// |       |  !   |  <   |  >   |  -   |  /   |            |      |        |        |       |      |       |
+// |       |  !   |  [   |  ]   |  -   |  /   |            |      |        |        |       |      |       |
 //                      |       |      |      |            |      |        |        |
 
             display-name = "Symbol 1";
@@ -116,7 +116,7 @@
 &trans     &trans     &trans     &trans      &trans     &trans            &trans     &trans        &trans        &trans      &trans    &trans
 &trans     &kp LBRC   &kp LPAR   &kp RPAR    &kp RBRC   &kp QMARK         &none      &kp K_VOL_DN  &kp K_VOL_UP  &kp K_MUTE  &none     &trans
 &trans     &kp CARET  &kp EQUAL  &kp UNDER   &kp DLLR   &kp STAR          &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT   &none     &trans
-&trans     &kp EXCL   &kp LT     &kp GT      &kp MINUS  &kp FSLH          &none      &none         &none         &none       &none     &trans
+&trans     &kp EXCL   &kp LBKT   &kp RBKT    &kp MINUS  &kp FSLH          &none      &none         &none         &none       &none     &trans
                       &trans      &trans      &trans     &trans            &trans     &trans        &trans        &trans
             >;
 
@@ -126,8 +126,8 @@
         symbol_2_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |       |      |       |      |      |      |            |      |        |        |        |        |       |
-// |       |  #   |   :   |  ;   |  '   |  "   |            |      | BT_PRV | BT_NXT | BT_CLR |        |       |
-// |       |  ~   |   <   |  >   |  |   |  \   |            | BT1  | BT2    | BT3    | BT4    | BT5    |       |
+// |       |  #   |   :   |  ;   |  '   |  "   |            |      |        |        |        |        |       |
+// |       |  ~   |   <   |  >   |  |   |  \   |            |      |        |        |        |        |       |
 // |       |  @   |   &   |  %   |  +   |  .   |            |      |        |        |        |        |       |
 //                      |       |       |      |            |      |        |        |
 
