@@ -43,7 +43,7 @@
 // |  TAB  |  Q  |  W   |  E   |  R   |  T   |            |  Y   |  U   |  I    |  O   |   P   |   -   |
 // | CAPS |  A  |  S   |  D   |  F   |  G   |            |  H   |  J   |  K    |  L   |   ;   |   '   |
 // | SHIFT | Z  |  X   |  C   |  V   |  B   |            |  N   |  M   |  ,    |  .   |   /   | SHIFT |
-//               | CTRL | CMD  |ESC/L |SPACE |            |ENTER |BSP/R |  CMD  | OPT  |
+//               | CTRL | CMD  |SPACE |ESC/L |            | CMD  |ENTER |BSP/R  | OPT  |
 
             display-name = "Base";
             bindings = <
@@ -51,7 +51,7 @@
 &kp TAB         &kp Q   &kp W             &kp E             &kp R   &kp T                &kp Y   &kp U   &kp I              &kp O           &kp P     &kp MINUS
 &kp CAPSLOCK    &hm LGUI A  &hm LALT S    &hm LCTRL D       &hm LSHFT F  &kp G           &kp H   &hm RSHFT J  &hm RCTRL K      &hm RALT L      &hm RGUI SEMI  &kp SQT
 &kp LEFT_SHIFT  &kp Z   &kp X             &kp C             &kp V   &kp B                &kp N   &kp M   &kp COMMA          &kp DOT         &kp FSLH  &kp RSHFT
-                        &kp LEFT_CONTROL  &kp LEFT_COMMAND  &lt 1 ESC &kp SPACE            &kp RET &lt 2 BSPC &kp RIGHT_COMMAND  &kp RIGHT_ALT
+                        &kp LEFT_CONTROL  &kp LEFT_COMMAND  &kp SPACE &lt 1 ESC            &kp RIGHT_COMMAND &kp RET &lt 2 BSPC &kp RIGHT_ALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
