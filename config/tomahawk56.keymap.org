@@ -8,6 +8,7 @@ To regenerate the keymap from this document, run =org-babel-tangle= from Emacs w
 
 This file is also configured to tangle automatically on save via a file-local Emacs hook.
 
+
 * Tangled Output
 
 #+begin_src c :tangle tomahawk56.keymap :noweb yes
@@ -43,6 +44,7 @@ This file is also configured to tangle automatically on save via a file-local Em
 #define SYMBOL_1 3
 #define SYMBOL_2 4
 #define AOE4 5
+#define AOE4_FN 6
 #+end_src
 
 * Hardware Notes
@@ -88,6 +90,8 @@ This file is also configured to tangle automatically on save via a file-local Em
 <<symbol-2-layer>>
 
 <<aoe4-layer>>
+    
+<<aoe4-fn-layer>>
 
 <<admin-layer>>
 
@@ -237,16 +241,18 @@ Thumbs:
 
 ** AOE4
 
+*** Base
+
 Main matrix:
 
-| ESC   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | BSPC |
-| TAB   | Q | W | E | R | T | Y | U | I | O | P | -    |
-| CAPS  | A | S | D | F | G | H | J | K | L | ; | '    |
-| SHIFT | Z | X | C | V | B | N | M | , | . | / | SHIFT |
+| ESC   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | BSPC   |
+| skALT | Q | W | E | R | T | Y | U | I | O | P | TG/AOE |
+| DEL   | A | S | D | F | G | H | J | K | L | ; | '      |
+| TAB   | Z | X | C | V | B | N | M | , | . | / | SHIFT  |
 
 Thumbs:
 
-| CTRL | SHIFT | ALT | SPACE | ESC | ENTER | BSPC | CTRL |
+| SPACE | skCTRL | skSHIFT | H/FN | ESC | ENTER | BSPC | CTRL |
 
 #+name: aoe4-layer
 #+begin_src c
@@ -254,10 +260,39 @@ Thumbs:
             display-name = "AOE4";
             bindings = <
 &kp ESC         &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp BSPC
-&kp TAB         &kp Q   &kp W   &kp E   &kp R   &kp T             &kp Y   &kp U   &kp I      &kp O     &kp P     &kp MINUS
-&kp CAPSLOCK    &kp A   &kp S   &kp D   &kp F   &kp G             &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z   &kp X   &kp C   &kp V   &kp B             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                        &kp LCTRL  &kp LSHFT  &kp LALT  &kp SPACE  &kp ESC  &kp RET  &kp BSPC  &kp RCTRL
+&sk LALT        &kp Q   &kp W   &kp E   &kp R   &kp T             &kp Y   &kp U   &kp I      &kp O     &kp P     &tog AOE4
+&kp DEL         &kp A   &kp S   &kp D   &kp F   &kp G             &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp TAB         &kp Z   &kp X   &kp C   &kp V   &kp B             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                        &kp SPACE  &sk LCTRL  &sk LSHFT  &lt AOE4_FN H  &kp ESC  &kp RET  &kp BSPC  &kp RCTRL
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+#+end_src
+
+*** AOE4 FN
+
+Main matrix:
+
+|   |  6  |  7   |  8 |  9 |  0 |   |   |   |   |   |   |
+|   | F1  | F2   | F3 | F4 | F5 |   |   |   |   |   |   |
+|   |     | HOME |  , |  . |    |   |   |   |   |   |   |
+|   |     |      |    |    |    |   |   |   |   |   |   |
+
+Thumbs:
+
+| TRANS | TRANS | TRANS | TRANS | TRANS | TRANS | TRANS | TRANS |
+
+#+name: aoe4-fn-layer
+#+begin_src c
+        aoe4_fn_layer {
+            display-name = "AOE4 FN";
+            bindings = <
+&trans         &kp N6   &kp N7   &kp N8   &kp N9   &kp N0           &trans  &trans  &trans    &trans   &trans   &trans
+&trans         &kp F1   &kp F2   &kp F3   &kp F4   &kp F5           &trans  &trans  &trans    &trans   &trans   &trans
+&trans         &none    &kp HOME &kp COMMA &kp DOT &trans           &trans  &trans  &trans    &trans   &trans   &trans
+&trans         &trans   &trans   &trans   &trans   &trans           &trans  &trans  &trans    &trans   &trans   &trans
+                        &trans    &trans    &trans            &trans      &trans   &trans   &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
