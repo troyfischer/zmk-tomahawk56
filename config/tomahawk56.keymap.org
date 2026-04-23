@@ -39,12 +39,12 @@ This file is also configured to tangle automatically on save via a file-local Em
 #include <dt-bindings/zmk/backlight.h>
 
 #define BASE 0
-#define ADMIN 1
-#define NUMBERS 2
-#define SYMBOL_1 3
-#define SYMBOL_2 4
-#define AOE4 5
-#define AOE4_FN 6
+#define NUMBERS 1
+#define SYMBOL_1 2
+#define SYMBOL_2 3
+#define AOE4 4
+#define AOE4_FN 5
+#define ADMIN 6
 #+end_src
 
 * Hardware Notes
