@@ -1,5 +1,4 @@
 #+title: Tomahawk56 ZMK Keymap
-#+startup: overview
 #+PROPERTY: header-args:c :comments no :padline no
 
 This file is the literate source for =tomahawk56.keymap=.
@@ -7,6 +6,13 @@ This file is the literate source for =tomahawk56.keymap=.
 To regenerate the keymap from this document, run =org-babel-tangle= from Emacs while visiting this file.
 
 This file is also configured to tangle automatically on save via a file-local Emacs hook.
+
+*WARNING*: ZMK layers are indexed by their *position* in the keymap block, NOT by
+the =#define= value. The =#define= numbers in the =includes-and-defines= block MUST
+match the order that layers appear in the keymap. If you reorder layers or add/remove
+layers, you MUST update the =#define= values to match. Getting this wrong will cause
+layers to point to the wrong places, and you may lose access to the Admin/bootloader
+layer — requiring a physical reset button double-tap to recover.
 
 
 * Tangled Output
@@ -130,10 +136,10 @@ This file is also configured to tangle automatically on save via a file-local Em
 
 Main matrix:
 
-| ESC    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | BSPC  |
-| TAB/TG | Q | W | E | R | T | Y | U | I | O | P | -/AD  |
-| CAPS   | A | S | D | F | G | H | J | K | L | ; | '     |
-| SHIFT  | Z | X | C | V | B | N | M | , | . | / | SHIFT |
+| ESC    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | BSPC    |
+| TAB    | Q | W | E | R | T | Y | U | I | O | P | -/AD    |
+| CAPS   | A | S | D | F | G | H | J | K | L | ; | '       |
+| SHIFT  | Z | X | C | V | B | N | M | , | . | / | TG/AOE  |
 
 Thumbs:
 
@@ -145,9 +151,9 @@ Thumbs:
             display-name = "Base";
             bindings = <
 &kp ESC         &kp N1  &kp N2            &kp N3            &kp N4  &kp N5               &kp N6  &kp N7  &kp N8             &kp N9          &kp N0    &kp BSPC
-&tg TAB AOE4   &kp Q   &kp W             &kp E             &kp R   &kp T                &kp Y   &kp U   &kp I              &kp O           &kp P     &lt ADMIN MINUS
+&kp TAB         &kp Q   &kp W             &kp E             &kp R   &kp T                &kp Y   &kp U   &kp I              &kp O           &kp P     &lt ADMIN MINUS
 &kp CAPSLOCK    &hm LGUI A  &hm LALT S    &hm LCTRL D       &hm LSHFT F  &kp G           &kp H   &hm RSHFT J  &hm RCTRL K      &hm LALT L      &hm RGUI SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z   &kp X             &kp C             &kp V   &kp B                &kp N   &kp M   &kp COMMA          &kp DOT         &kp FSLH  &kp RSHFT
+&kp LEFT_SHIFT  &kp Z   &kp X             &kp C             &kp V   &kp B                &kp N   &kp M   &kp COMMA          &kp DOT         &kp FSLH  &tog AOE4
                         &kp LC(LS(LA(LGUI)))  &mt LC(LA(LSHFT)) TAB  &kp SPACE &lt NUMBERS ESC  &lt SYMBOL_1 ESC &kp RET &lt SYMBOL_2 BSPC &kp RIGHT_COMMAND
             >;
 
@@ -246,9 +252,9 @@ Thumbs:
 Main matrix:
 
 | ESC   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | BSPC   |
-| skALT | Q | W | E | R | T | Y | U | I | O | P | TG/AOE |
+| skALT | Q | W | E | R | T | Y | U | I | O | P |        |
 | DEL   | A | S | D | F | G | H | J | K | L | ; | '      |
-| TAB   | Z | X | C | V | B | N | M | , | . | / | SHIFT  |
+| TAB   | Z | X | C | V | B | N | M | , | . | / | TG/AOE |
 
 Thumbs:
 
@@ -260,9 +266,9 @@ Thumbs:
             display-name = "AOE4";
             bindings = <
 &kp ESC         &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp BSPC
-&sk LALT        &kp Q   &kp W   &kp E   &kp R   &kp T             &kp Y   &kp U   &kp I      &kp O     &kp P     &tog AOE4
+&sk LALT        &kp Q   &kp W   &kp E   &kp R   &kp T             &kp Y   &kp U   &kp I      &kp O     &kp P     &none
 &kp DEL         &kp A   &kp S   &kp D   &kp F   &kp G             &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp TAB         &kp Z   &kp X   &kp C   &kp V   &kp B             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&kp TAB         &kp Z   &kp X   &kp C   &kp V   &kp B             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &tog AOE4
                         &kp SPACE  &sk LCTRL  &sk LSHFT  &lt AOE4_FN H  &kp ESC  &kp RET  &kp BSPC  &kp RCTRL
             >;
 
@@ -304,9 +310,9 @@ Thumbs:
 Main matrix:
 
 | BTCLR | BT1 | BT2 | BT3 | BT4 | BT5 | RGB  | HUE+ | SAT+ | BRI+ | SPD+ | FX+ |
-| BOOT  |     |     |     |     |     | BOOT | HUE- | SAT- | BRI- | SPD- | FX- |
+|       |     |     |     |     |     |      | HUE- | SAT- | BRI- | SPD- | FX- |
 | `     | !   | @   | #   | $   | %   | ^    | &    | *    | (    | )    | ~   |
-|       |     |     |     | [   | ]   |      | _    | +    | {    | }    | |   |
+| BOOT  |     |     |     | [   | ]   | BOOT | _    | +    | {    | }    | |   |
 
 Thumbs:
 
@@ -318,9 +324,9 @@ Thumbs:
             display-name = "Admin";
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4         &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_EFF
-&bootloader &trans        &trans        &trans        &trans        &trans               &bootloader      &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_EFR
+&trans      &trans        &trans        &trans        &trans        &trans               &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_EFR
 &kp GRAVE   &kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PRCNT            &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&trans      &trans        &trans        &trans        &kp LBKT      &kp RBKT             &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
+&bootloader &trans        &trans        &trans        &kp LBKT      &kp RBKT             &bootloader &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
                           &trans        &trans        &trans        &trans               &trans  &trans     &trans     &trans
             >;
 
